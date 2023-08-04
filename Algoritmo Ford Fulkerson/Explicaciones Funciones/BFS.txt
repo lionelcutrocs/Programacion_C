@@ -1,0 +1,18 @@
+El BFS se utiliza para encontrar caminos desde el nodo fuente (S) al nodo sumidero (T) en el grafo de flujo.
+Funciona explorando primero todos los nodos vecinos directos de un nodo dado antes de avanzar hacia los vecinos de sus vecinos y así sucesivamente.
+Esta forma garantiza que en cada iteración se encuentre el camino más corto posible desde el nodo fuente al nodo sumidero.
+
+La implementación de BFS es la siguiente:
+
+- Se inicializa una cola donde se guardarán los nodos a visitar y dos arreglos: 
+	-> Uno ( visitado [ ] ) para registrar los nodos visitados.
+	-> Segundo ( pasre [ ] ) para almacenar el nodo padre de cada nodo visitado en el camino desde S a T.
+
+- Se coloca el nodo fuente (S) en la cola y se marca como visitado.
+
+- Mientras haya nodos en la cola, se toma el primer nodo de la cola y
+se exploran sus vecinos no visitados que tienen capacidad de flujo positiva en el grafo de flujo.
+
+- Se agrega cada nodo vecino a la cola, se marca como visitado y se establece su nodo padre para rastrear el camino de S a T.
+
+- La función continúa hasta que no se encuentre un camino desde S a T en el grafo de flujo residual.

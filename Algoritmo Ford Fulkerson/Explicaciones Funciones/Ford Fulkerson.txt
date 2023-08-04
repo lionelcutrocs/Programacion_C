@@ -1,0 +1,20 @@
+La función Ford-Fulkerson se utiliza para encontrar el flujo máximo en una red de flujo.
+Combinado con BFS para encontrar caminos aumentantes y el proceso de actualización de flujo en el grafo con flujo.
+
+La implementación de Ford-Fulkerson es la siguiente:
+
+- El función utiliza un bucle while para buscar caminos aumentantes desde S a T utilizando el BFS.
+
+- Una vez que se encuentra un camino aumentante, se determina la capacidad mínima (CM) de las aristas en ese camino.
+
+- Luego, se actualiza el flujo a lo largo del camino aumentante disminuyendo la
+ capacidad de las aristas en el camino en la CM y aumentando la capacidad de las aristas inversas en el camino en la CM.
+
+- Se repite este proceso hasta que no se encuentre más camino aumentante desde S a T en el grafo con flujo.
+
+- En cada iteración, el programa imprime el recorrido del camino aumentante y/o la matriz de adyacencia del grafo con flujo actualizado.
+
+- Finalmente, se imprime el flujo máximo en la red.
+
+- La función Ford-Fulkerson garantiza que el flujo encontrado sea óptimo y que cumpla con la conservación de flujo en cada nodo intermedio,
+donde el flujo de entrada es igual al flujo de salida.

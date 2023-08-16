@@ -1,0 +1,161 @@
+
+
+/* arbolbinario .c */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "arbolbinario.h"
+
+	/* Funcion de insertar */
+
+	void inserta ( arbol **A , char *x )										// funcion para insertar
+	{
+	 if (*A == NULL ) {															// verifico que puntero A este vacio, que no apunte a ningun nodo del arbol
+		 *A = ( arbol *) malloc ( sizeof ( arbol ) ) ;							// creo un espacio de memoria, para hacer el nodo, con tamaño de la struct arbol
+		 (*A )->dato = strdup (x);												// strdup para crear una copia del string y le paso x para que lo almacene 
+		 (*A )->h_izq = NULL ;													// establesco al puntero NULL para decir que no tiene hijos 
+		 (*A )->h_der = NULL ;													// establesco al puntero NULL para decir que no tiene hijos
+		 }
+	 else {
+
+		if ( strcmp (x, (*A) -> dato ) < 0 )									// strcmp para comparar x con dato, si es menor a 0
+			 inserta ( & ((*A ) -> h_izq ) , x ) ;								// si es < 0, inserta string + nodo en h_izq
+		 else if ( strcmp (x, (*A) -> dato) > 0 )								// strcmp para comprar x con dato, si es mayor
+			 inserta ( & ((*A ) -> h_der ) , x ) ;								// si es > 0, inserta string + nodo en h_der
+		 }
+		
+	 }
+	
+	/* Funcion verificar si existe el nodo */
+
+     int es_miembro(arbol *A, char *x) // la funcion apunta a la estructura
+     {
+     	if (A == NULL)                                                          // verifico que puntero A este vacio
+		 return -1;																// devuelvo -1 para indicar que A está vacio
+
+	 if  ( strcmp ( A -> dato, x) == 0 )										// evaluo con strcmp si dato, x es == 0
+		 return 1;																// si lo es devuelve 1
+
+	 else if ( strcmp (A -> dato, x) < 0 )										// evaluo con strcmp si dato, x es > 0
+		 return es_miembro (A  -> h_izq , x ) ;									// si lo es busca en la parte h_izq del arbol
+
+	 else
+		 return es_miembro (A  -> h_der , x ) ;									// si no lo es, busca en la parte h_der del arbol
+	 }
+
+
+	/* Main */
+
+		 int main ()
+		 {
+		 arbol * raiz ;															// creo el puntero raiz de tipo arbol, para apuntar hacia él	
+		 raiz = NULL ;															// inicializo el puntero en NULL para decir que arranca en 0
+
+
+		 inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
+		 inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
+		 inserta (&raiz, "noak");												// inserto de forma manual el string al arbol
+		 inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
+		 inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
+
+
+		if (es_miembro ( raiz , "robertos") == 1)
+			 printf ("\nEl elemento buscado existe en el arbol 1\n");			// llamo funcion para ver si existe la raiz robertos
+		else
+			 printf ("\nNo existe 1\n") ;
+
+		if (es_miembro (raiz, "lionel") == 1)									// llamo funcion para ver si existe el nodo lionel
+			 printf ("\nEl elemento buscado existe en el arbol 2\n");
+		else
+			 printf ("\nNo existe 2\n");
+			 printf ("\n");
+
+
+		printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
+		listar_inorden(raiz);
+			printf ("\n");
+
+		printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
+		listar_posorden(raiz);
+			printf ("\n");
+
+		printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
+		listar_preorden(raiz);
+		 	printf ("\n");
+
+		return 0;
+
+	}
+
+	/*Funciones de listado*/
+
+	void listar_preorden ( arbol* raiz) {
+		if ( raiz != NULL) 														// evaluo la raiz si esta vacia, si no, continua
+		{													
+			printf ("%s \n", raiz -> dato);										// imprimo primero la raiz
+			listar_preorden ( raiz -> h_izq);									// me muevo hacia la izquierda (imprimo)
+			listar_preorden ( raiz -> h_der);									// me muevo hacia la derecha (imprimo)
+		}
+	}
+
+	void listar_inorden (arbol* raiz) {
+		if ( raiz != NULL)														// evaluo la raiz si esta vacia, si no, continua
+		{
+			listar_inorden ( raiz -> h_izq );									// me muevo hacia la izquierda (imprimo)
+			printf ("%s \n", raiz -> dato);										// imprimo la raiz
+			listar_inorden ( raiz -> h_der);									// me muevo hacia la derecha (imprimo)
+		}
+	}
+
+	void listar_posorden (arbol* raiz) {
+		if ( raiz != NULL)														// evaluo la raiz si esta vacia, si no, continua
+			{
+			listar_posorden ( raiz -> h_izq );									// me muevo hacia la izquierda (imprimo)
+			listar_posorden ( raiz -> h_der);									// me muevo hacia la derecha (imprimo)
+			printf ( "%s \n", raiz -> dato);									// imprimo la raiz
+		}
+	}
+
+	/*Funcion para eliminar*/
+
+	int suprime_min ( arbol ** A )
+ {
+		int v_ref ;
+		if ((* A ) -> h_izq == NULL ) {
+			v_ref = (* A ) -> dato;
+			arbol * tmp = * A;
+			* A = (* A ) -> h_der;
+			free ( tmp );
+			return v_ref;
+ 		} else {
+ 			return suprime_min (&((* A ) -> h_izq ) ) ;
+ 			}
+ }
+		void suprime ( arbol ** A , char x ) {
+
+ 		if (* A != NULL ) {
+ 			if ( x < (* A ) -> dato )
+ 				suprime (&((* A ) -> h_izq ) , x ) ;
+ 		else if ( x > (* A ) -> dato )
+ 				suprime (&((* A ) -> h_der ) , x ) ;
+
+ // Lo encontre
+
+ 		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {
+ 			arbol * tmp = * A ;
+ 			* A = NULL ;
+ 			free ( tmp ) ;
+		} else if ((* A ) -> h_izq == NULL ) {
+ 			arbol * tmp = * A ;
+			 * A = (* A ) -> h_der ;
+			 free ( tmp ) ;
+ 		} else if ((* A ) -> h_der == NULL ) {
+ 			arbol * tmp = * A ;
+ 			* A = (* A ) -> h_izq ;
+ 			free ( tmp ) ;
+ 		} else { 										
+ 			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) ) ;
+ 		}
+	}
+}

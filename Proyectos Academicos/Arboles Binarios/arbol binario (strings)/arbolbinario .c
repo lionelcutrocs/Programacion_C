@@ -21,7 +21,7 @@
 
 		if ( strcmp (x, (*A) -> dato ) < 0 )									// strcmp para comparar x con dato, si es menor a 0
 			 inserta ( & ((*A ) -> h_izq ) , x ) ;								// si es < 0, inserta string + nodo en h_izq
-		 else if ( strcmp (x, (*A) -> dato) > 0 )								// strcmp para comprar x con dato, si es mayor
+		 else if ( strcmp (x, (*A) -> dato) > 0 )								// strcmp para comparar x con dato, si es mayor
 			 inserta ( & ((*A ) -> h_der ) , x ) ;								// si es > 0, inserta string + nodo en h_der
 		 }
 		
@@ -29,7 +29,7 @@
 	
 	/* Funcion verificar si existe el nodo */
 
-     int es_miembro(arbol *A, char *x) // la funcion apunta a la estructura
+     int es_miembro (arbol *A, char *x) 										// la funcion apunta a la estructura
      {
      	if (A == NULL)                                                          // verifico que puntero A este vacio
 		 return -1;																// devuelvo -1 para indicar que A está vacio
@@ -47,44 +47,49 @@
 
 	/* Main */
 
-		 int main ()
-		 {
-		 arbol * raiz ;															// creo el puntero raiz de tipo arbol, para apuntar hacia él	
-		 raiz = NULL ;															// inicializo el puntero en NULL para decir que arranca en 0
+ int main ()
+{
+ arbol * raiz ;															// creo el puntero raiz de tipo arbol, para apuntar hacia él	
+ raiz = NULL ;															// inicializo el puntero en NULL para decir que arranca en 0
+		 
+ int resp1 [3];
+
+	inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
+	inserta (&raiz, "noak");												// inserto de forma manual el string al arbol
+	inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
 
 
-		 inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
-		 inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
-		 inserta (&raiz, "noak");												// inserto de forma manual el string al arbol
-		 inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
-		 inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
+	printf ("Que nodo queres verificar?\n");
+	scanf ("-> ", &resp1 );
 
 
-		if (es_miembro ( raiz , "robertos") == 1)
-			 printf ("\nEl elemento buscado existe en el arbol 1\n");			// llamo funcion para ver si existe la raiz robertos
-		else
-			 printf ("\nNo existe 1\n") ;
+	if (es_miembro ( raiz , "robertos") == 1)
+		printf ("\nEl elemento buscado existe en el arbol 1\n");			// llamo funcion para ver si existe la raiz robertos
+	else
+		printf ("\nNo existe una raiz\n") ;
 
-		if (es_miembro (raiz, "lionel") == 1)									// llamo funcion para ver si existe el nodo lionel
-			 printf ("\nEl elemento buscado existe en el arbol 2\n");
-		else
-			 printf ("\nNo existe 2\n");
-			 printf ("\n");
-
-
-		printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
-		listar_inorden(raiz);
-			printf ("\n");
-
-		printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
-		listar_posorden(raiz);
-			printf ("\n");
-
-		printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
-		listar_preorden(raiz);
-		 	printf ("\n");
+	if (es_miembro (raiz, "lionel") == 1)									// llamo funcion para ver si existe el nodo lionel
+		printf ("\nEl elemento buscado existe en el arbol 2\n");
+	else
+		printf ("\nNo existe 2\n");
+		printf ("\n");
 
 
+	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
+	listar_inorden(raiz);
+		printf ("\n");
+
+	printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
+	listar_posorden(raiz);
+		printf ("\n");
+
+	printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
+	listar_preorden(raiz);
+		printf ("\n");
+
+ 
 	 system ("pause");
 	 return 0;
 	}

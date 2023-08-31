@@ -53,6 +53,7 @@
  raiz = NULL ;															// inicializo el puntero en NULL para decir que arranca en 0
 		 
  int resp1 [3];
+ int resp2 [3];
 
 	inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
 	inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
@@ -62,32 +63,43 @@
 
 
 	printf ("Que nodo queres verificar?\n");
-	scanf ("-> ", &resp1 );
+	printf ("-> ");
+	scanf ("%s", resp1 );
+
+	if ( strcmp ( resp1, "raiz" ) == 0 )
+	{
+		printf ("Ingrese la raiz\n");
+		scanf ("%s", resp2 );
+
+		if (es_miembro ( raiz , &resp2 ) == 1)
+		{
+			printf ("\nLa raiz, si existe.\n");			// llamo funcion para ver si existe la raiz robertos
+		}
+		else {
+			printf ("\nNo existe una raiz\n") ;
+		}
+	} 
+	
+			
+
+		if (es_miembro (raiz, "lionel") == 1)									// llamo funcion para ver si existe el nodo lionel
+			printf ("\nEl elemento buscado existe en el arbol 2\n");
+		else
+			printf ("\nNo existe 2\n");
+			printf ("\n");
 
 
-	if (es_miembro ( raiz , "robertos") == 1)
-		printf ("\nEl elemento buscado existe en el arbol 1\n");			// llamo funcion para ver si existe la raiz robertos
-	else
-		printf ("\nNo existe una raiz\n") ;
+	// printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
+	// listar_inorden(raiz);
+	// 	printf ("\n");
 
-	if (es_miembro (raiz, "lionel") == 1)									// llamo funcion para ver si existe el nodo lionel
-		printf ("\nEl elemento buscado existe en el arbol 2\n");
-	else
-		printf ("\nNo existe 2\n");
-		printf ("\n");
+	// printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
+	// listar_posorden(raiz);
+	// 	printf ("\n");
 
-
-	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
-	listar_inorden(raiz);
-		printf ("\n");
-
-	printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
-	listar_posorden(raiz);
-		printf ("\n");
-
-	printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
-	listar_preorden(raiz);
-		printf ("\n");
+	// printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
+	// listar_preorden(raiz);
+	// 	printf ("\n");
 
  
 	 system ("pause");
@@ -125,43 +137,43 @@
 
 	/*Funcion para eliminar*/
 
-	int suprime_min ( arbol ** A )
- {
-		int v_ref ;
-		if ((* A ) -> h_izq == NULL ) {
-			v_ref = (* A ) -> dato;
-			arbol * tmp = * A;
-			* A = (* A ) -> h_der;
-			free ( tmp );
-			return v_ref;
- 		} else {
- 			return suprime_min (&((* A ) -> h_izq ) ) ;
- 			}
- }
-		void suprime ( arbol ** A , char x ) {
+// 	int suprime_min ( arbol ** A )
+//  {
+// 		int v_ref ;
+// 		if ((* A ) -> h_izq == NULL ) {
+// 			v_ref = (* A ) -> dato;
+// 			arbol * tmp = * A;
+// 			* A = (* A ) -> h_der;
+// 			free ( tmp );
+// 			return v_ref;
+//  		} else {
+//  			return suprime_min (&((* A ) -> h_izq ) ) ;
+//  			}
+//  }
+// 		void suprime ( arbol ** A , char x ) {
 
- 		if (* A != NULL ) {
- 			if ( x < (* A ) -> dato )
- 				suprime (&((* A ) -> h_izq ) , x ) ;
- 		else if ( x > (* A ) -> dato )
- 				suprime (&((* A ) -> h_der ) , x ) ;
+//  		if (* A != NULL ) {
+//  			if ( x < (* A ) -> dato )
+//  				suprime (&((* A ) -> h_izq ) , x ) ;
+//  		else if ( x > (* A ) -> dato )
+//  				suprime (&((* A ) -> h_der ) , x ) ;
 
- // Lo encontre
+//  // Lo encontre
 
- 		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {
- 			arbol * tmp = * A ;
- 			* A = NULL ;
- 			free ( tmp ) ;
-		} else if ((* A ) -> h_izq == NULL ) {
- 			arbol * tmp = * A ;
-			 * A = (* A ) -> h_der ;
-			 free ( tmp ) ;
- 		} else if ((* A ) -> h_der == NULL ) {
- 			arbol * tmp = * A ;
- 			* A = (* A ) -> h_izq ;
- 			free ( tmp ) ;
- 		} else { 										
- 			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) ) ;
- 		}
-	}
-}
+//  		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {
+//  			arbol * tmp = * A ;
+//  			* A = NULL ;
+//  			free ( tmp ) ;
+// 		} else if ((* A ) -> h_izq == NULL ) {
+//  			arbol * tmp = * A ;
+// 			 * A = (* A ) -> h_der ;
+// 			 free ( tmp ) ;
+//  		} else if ((* A ) -> h_der == NULL ) {
+//  			arbol * tmp = * A ;
+//  			* A = (* A ) -> h_izq ;
+//  			free ( tmp ) ;
+//  		} else { 										
+//  			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) ) ;
+//  		}
+// 	}
+// }

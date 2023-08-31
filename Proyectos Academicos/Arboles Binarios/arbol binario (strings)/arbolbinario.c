@@ -18,30 +18,40 @@
 		 (*A )->h_der = NULL ;													// establesco al puntero NULL para decir que no tiene hijos
 		 }
 	 else {
-
 		if ( strcmp (x, (*A) -> dato ) < 0 )									// strcmp para comparar x con dato, si es menor a 0
 			 inserta ( & ((*A ) -> h_izq ) , x ) ;								// si es < 0, inserta string + nodo en h_izq
 		 else if ( strcmp (x, (*A) -> dato) > 0 )								// strcmp para comparar x con dato, si es mayor
 			 inserta ( & ((*A ) -> h_der ) , x ) ;								// si es > 0, inserta string + nodo en h_der
-		 }
-		
-	 }
+		}
+	}
 	
 	/* Funcion verificar si existe el nodo */
 
-     int es_miembro (arbol *A, char *x) 										// la funcion apunta a la estructura
-     {
-     	if (A == NULL)                                                          // verifico que puntero A este vacio
-		 return -1;																// devuelvo -1 para indicar que A está vacio
+    int es_miembro (arbol *A, char *x) 										// la funcion apunta a la estructura
+    {
+     	if (A == NULL)                                                         // verifico que puntero A este vacio
+		{
+			printf("Nodo vacio encontrado\n");
+			return -1;																// devuelvo -1 para indicar que A está vacio
+		}
 
-	 if  ( strcmp ( A -> dato, x) == 0 )										// evaluo con strcmp si dato, x es == 0
-		 return 1;																// si lo es devuelve 1
+		printf ("Comparando %s con %s\n", A->dato, x );
 
-	 else if ( strcmp (A -> dato, x) < 0 )										// evaluo con strcmp si dato, x es > 0
-		 return es_miembro (A  -> h_izq , x ) ;									// si lo es busca en la parte h_izq del arbol
-	 else
-		 return es_miembro (A  -> h_der , x ) ;									// si no lo es, busca en la parte h_der del arbol
-	 }
+	 	if ( strcmp ( A -> dato, x) == 0 )										// evaluo con strcmp si dato, x es == 0
+		{	
+			printf ("Nodo encontrado: %s\n", A->dato ); 
+			return 1;																// si lo es devuelve 1
+		
+		} else if ( strcmp (A -> dato, x) < 0 )	{									// evaluo con strcmp si dato, x es > 0
+		
+			printf ("Buscando el subarbol izq\n");
+			return es_miembro (A  -> h_izq , x ) ;									// si lo es busca en la parte h_izq del arbol
+		
+		} else {
+		 	printf ("Buscando el subarbol der\n");
+			return es_miembro (A  -> h_der , x ) ;									// si no lo es, busca en la parte h_der del arbol
+		}
+	}
 
 
 	/* Main */
@@ -62,6 +72,9 @@
 	inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
 	inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
 
+	// printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
+	// listar_inorden(raiz);
+	// 	printf ("\n");
 
 	printf ("Que nodo queres verificar?\n");
 	printf ("-> ");
@@ -92,8 +105,8 @@
 		printf ("-> ");
 		scanf ("%s", respn );
 
-		if (es_miembro (raiz, "lionel") == 1) 
-		{									// llamo funcion para ver si existe el nodo lionel
+		if (es_miembro ( raiz, respn ) == 1) 						// llamo funcion para ver si existe el nodo lionel
+		{									
 			printf ("\nEl nodo ingresado existe\n");
 		}
 		else {

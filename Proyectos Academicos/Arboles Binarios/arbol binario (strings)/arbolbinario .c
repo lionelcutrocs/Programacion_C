@@ -84,8 +84,9 @@
 		listar_preorden(raiz);
 		 	printf ("\n");
 
-		return 0;
 
+	 system ("pause");
+	 return 0;
 	}
 
 	/*Funciones de listado*/

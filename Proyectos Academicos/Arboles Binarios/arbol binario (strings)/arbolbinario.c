@@ -39,7 +39,6 @@
 
 	 else if ( strcmp (A -> dato, x) < 0 )										// evaluo con strcmp si dato, x es > 0
 		 return es_miembro (A  -> h_izq , x ) ;									// si lo es busca en la parte h_izq del arbol
-
 	 else
 		 return es_miembro (A  -> h_der , x ) ;									// si no lo es, busca en la parte h_der del arbol
 	 }
@@ -54,6 +53,8 @@
 		 
  char resp1 [5];
  char resp2 [10];
+ char resp3 [3];
+ char respn [15];
 
 	inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
 	inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
@@ -65,14 +66,13 @@
 	printf ("Que nodo queres verificar?\n");
 	printf ("-> ");
 	scanf ("%s", resp1 );
-	printf ("%s-\n", resp1);
 
 	if ( strcmp ( resp1, "raiz" ) == 0 )
 	{
 		printf ("\nIngrese la raiz\n");
+		printf ("-> ");
 		scanf ("%s", resp2 );
 		
-
 		if (es_miembro ( raiz , resp2 ) == 1)
 		{
 			printf ("\nLa raiz, si existe.\n");			// llamo funcion para ver si existe la raiz robertos
@@ -82,15 +82,26 @@
 		}
 	} 
 	
-			
+	printf ("\nQueres buscar un nodo?\n");
+	printf ("-> ");
+	scanf ("%s", resp3 );
+
+	if ( strcasecmp ( resp3, "si" ) == 0 )
+	{
+		printf ("\nIngrese el nodo\n");
+		printf ("-> ");
+		scanf ("%s", respn );
 
 		if (es_miembro (raiz, "lionel") == 1) 
 		{									// llamo funcion para ver si existe el nodo lionel
-			printf ("\nEl elemento buscado existe en el arbol 2\n");
+			printf ("\nEl nodo ingresado existe\n");
 		}
 		else {
 			printf ("\nNo existe 2\n");
 		}
+	}
+	
+
 
 
 	// printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden

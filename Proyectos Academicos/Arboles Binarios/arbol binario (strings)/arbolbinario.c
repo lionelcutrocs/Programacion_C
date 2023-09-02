@@ -35,21 +35,21 @@
 			return -1;																// devuelvo -1 para indicar que A está vacio
 		}
 
-		printf ("Comparando %s con %s\n", A->dato, x );
+		printf ("\nComparando %s con %s\n", A->dato, x );
 
-	 	if ( strcmp ( A -> dato, x) == 0 )										// evaluo con strcmp si dato, x es == 0
+	 	if ( strcmp (x, A-> dato) == 0 )										// evaluo con strcmp si dato, x es == 0
 		{	
 			printf ("Nodo encontrado: %s\n", A->dato ); 
 			return 1;																// si lo es devuelve 1
 		
-		} else if ( strcmp (A -> dato, x) < 0 )	{									// evaluo con strcmp si dato, x es > 0
+		} else if ( strcmp (x, A-> dato) < 0 )	{									// evaluo con strcmp si dato, x es > 0
 		
 			printf ("Buscando el subarbol izq\n");
-			return es_miembro (A  -> h_izq , x ) ;									// si lo es busca en la parte h_izq del arbol
+			return es_miembro (A-> h_izq , x ) ;									// si lo es busca en la parte h_izq del arbol
 		
 		} else {
 		 	printf ("Buscando el subarbol der\n");
-			return es_miembro (A  -> h_der , x ) ;									// si no lo es, busca en la parte h_der del arbol
+			return es_miembro (A-> h_der , x ) ;									// si no lo es, busca en la parte h_der del arbol
 		}
 	}
 
@@ -67,14 +67,22 @@
  char respn [15];
 
 	inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
-	inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
+	// inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
 	inserta (&raiz, "noak");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
+	// inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
 	inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
 
-	// printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
-	// listar_inorden(raiz);
-	// 	printf ("\n");
+	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
+	listar_inorden(raiz);
+		printf ("\n");
+
+	printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
+	listar_posorden(raiz);
+		printf ("\n");
+
+	printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
+	listar_preorden(raiz);
+		printf ("\n");
 
 	printf ("Que nodo queres verificar?\n");
 	printf ("-> ");

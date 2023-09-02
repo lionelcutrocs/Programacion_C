@@ -67,21 +67,13 @@
  char respn [15];
 
 	inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
-	// inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
+	inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
 	inserta (&raiz, "noak");												// inserto de forma manual el string al arbol
-	// inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
 	inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
 
 	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
 	listar_inorden(raiz);
-		printf ("\n");
-
-	printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
-	listar_posorden(raiz);
-		printf ("\n");
-
-	printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
-	listar_preorden(raiz);
 		printf ("\n");
 
 	printf ("Que nodo queres verificar?\n");

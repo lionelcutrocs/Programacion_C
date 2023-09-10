@@ -88,6 +88,7 @@
 	switch ( opcion )
 	{
 	case 1:
+		printf ("\n---------------------------->\n");
 		printf ("Busqueda de Raiz, seleccionado.\n");
 		
 		printf ("\nIngrese la raiz\n");
@@ -105,6 +106,7 @@
 		break;
 
 	case 2:
+		printf ("\n---------------------------->\n");
 		printf ("Busqueda de Nodo, seleccionado.\n");
 
 		printf ("\nIngrese el nodo\n");
@@ -118,6 +120,7 @@
 		else {
 			printf ("\nEl nodo, no existe\n");
 		}
+		break;
 
 	default:
 		printf ("Numero no reconocido.\n");

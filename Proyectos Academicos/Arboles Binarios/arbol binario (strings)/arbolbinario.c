@@ -60,10 +60,12 @@
  raiz = NULL ;															// inicializo el puntero en NULL para decir que arranca en 0
 
  int opcion;		 
- char resp1 [5];
- char resp2 [10];
- char resp3 [3];
- char respn [15];
+ int resp1;
+ char respC1 [10];
+ int respR;
+ char respC2 [10];
+ char resp2 [3];
+ char respE [8];
  
 //																		// insercion de nodos
 	inserta (&raiz, "manzana");											// 7
@@ -93,9 +95,9 @@
 		
 		printf ("\nIngrese la raiz\n");
 		printf ("-> ");
-		scanf ("%s", resp2 );
+		scanf ("%s", respC1 );
 		
-		if (es_miembro ( raiz , resp2 ) == 1)
+		if (es_miembro ( raiz , respC1 ) == 1)
 		{
 			printf ("\nLa raiz, si existe.\n");							// llamo funcion para ver si existe la raiz robertos
 		
@@ -111,9 +113,9 @@
 
 		printf ("\nIngrese el nodo\n");
 		printf ("-> ");
-		scanf ("%s", respn );
+		scanf ("%s", respC2 );
 
-		if (es_miembro ( raiz, respn ) == 1) 							// llamo funcion para ver si existe el nodo lionel
+		if (es_miembro ( raiz, respC2 ) == 1) 							// llamo funcion para ver si existe el nodo lionel
 		{									
 			printf ("\nEl nodo ingresado existe\n");
 		}

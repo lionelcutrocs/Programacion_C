@@ -87,7 +87,7 @@
 		
 		if (es_miembro ( raiz , resp2 ) == 1)
 		{
-			printf ("\nLa raiz, si existe.\n");			// llamo funcion para ver si existe la raiz robertos
+			printf ("\nLa raiz, si existe.\n");							// llamo funcion para ver si existe la raiz robertos
 		}
 		else {
 			printf ("\nNo existe una raiz\n") ;
@@ -104,7 +104,7 @@
 		printf ("-> ");
 		scanf ("%s", respn );
 
-		if (es_miembro ( raiz, respn ) == 1) 						// llamo funcion para ver si existe el nodo lionel
+		if (es_miembro ( raiz, respn ) == 1) 							// llamo funcion para ver si existe el nodo lionel
 		{									
 			printf ("\nEl nodo ingresado existe\n");
 		}
@@ -116,15 +116,15 @@
 
 
 
-	// printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
+	// printf("listado en inorden\n");									// llamo funcion para listar el arbol en cierto orden
 	// listar_inorden(raiz);
 	// 	printf ("\n");
 
-	// printf("listado en posorden\n");										// llamo funcion para listar el arbol en cierto orden
+	// printf("listado en posorden\n");									// llamo funcion para listar el arbol en cierto orden
 	// listar_posorden(raiz);
 	// 	printf ("\n");
 
-	// printf ("listado en preorden\n");										// llamo funcion para listar el arbol en cierto orden
+	// printf ("listado en preorden\n");								// llamo funcion para listar el arbol en cierto orden
 	// listar_preorden(raiz);
 	// 	printf ("\n");
 
@@ -181,31 +181,31 @@
 
  void suprime ( arbol ** A , char x )
 {
-	if (* A != NULL ) 
+	if (* A != NULL ) 														// Verifico que haya un nodo en la posicion actual
 	{
- 		if ( x < (* A ) -> dato )
+ 		if ( x < (* A ) -> dato )											// Elimino un nodo simple en lado Izquierdo
  			suprime (&((* A ) -> h_izq ) , x );
 
- 		else if ( x > (* A ) -> dato )
+ 		else if ( x > (* A ) -> dato )										// Elimino un nodo simple en lado Derecho
  			suprime (&((* A ) -> h_der ) , x );
-//																		 // Lo encontre
- 		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {
-			 arbol * tmp = * A;
-			 * A = NULL;
- 			 free ( tmp );
+//																		 	// Encuentro nodo, adapto varios casos de eliminacion
+ 		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {		// Caso, el nodo sin hijos.
+			 arbol * tmp = * A;												// Creo un puntero temporal "tmp" apuntando al nodo a eliminar
+			 * A = NULL;													// Indico que el nodo se elimino en el arbol
+ 			 free ( tmp );													// Libero memoria ocupada por "tmp"
 
-		} else if ((* A ) -> h_izq == NULL ) {
+		} else if ((* A ) -> h_izq == NULL ) {								// Elimino nodo en lado Derecho
  			 arbol * tmp = * A;
 			 * A = (* A ) -> h_der;
 			 free ( tmp );
 
- 		} else if ((* A ) -> h_der == NULL ) {
+ 		} else if ((* A ) -> h_der == NULL ) {								// Elimino nodo en lado Izquierdo
  			 arbol * tmp = * A;
  			 * A = (* A ) -> h_izq;
  			 free ( tmp );
 
  		} else {			
- 			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) );
- 		}
- 	}
+ 			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) );				// Elimino un padre con hijos, se llama a suprimir en el valor minimo a la derecha
+ 		}																	// y reemplazo el valor minimo entre los valores mayores y se actualiza,
+ 	}																		// este metodo ayuda a mantener el arbol en equilibrio.
 }

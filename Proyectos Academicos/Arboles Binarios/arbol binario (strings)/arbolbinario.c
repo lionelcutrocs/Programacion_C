@@ -58,7 +58,8 @@
 {
  arbol * raiz ;															// creo el puntero raiz de tipo arbol, para apuntar hacia él	
  raiz = NULL ;															// inicializo el puntero en NULL para decir que arranca en 0
-		 
+
+ int opcion;		 
  char resp1 [5];
  char resp2 [10];
  char resp3 [3];
@@ -74,6 +75,51 @@
 	// printf("listado en inorden\n");									// llamo funcion para listar el arbol en cierto orden
 	// listar_inorden(raiz);
 	// 	printf ("\n");
+
+	printf ("Bienvenidx al manejo de Arbol Binario.\n");
+	printf ("Eliga la siguiente opcion para comenzar. (ingrese el numero correspondiente)\n");
+	printf ("\n1. Opcion de Busqueda de Raiz.");
+	printf ("2. Opcion de Busqueda de Nodos.\n");
+
+
+	switch ( opcion )
+	{
+	case 1:
+		printf ("Busqueda de Raiz, seleccionado.\n");
+		
+		printf ("\nIngrese la raiz\n");
+		printf ("-> ");
+		scanf ("%s", resp2 );
+		
+		if (es_miembro ( raiz , resp2 ) == 1)
+		{
+			printf ("\nLa raiz, si existe.\n");							// llamo funcion para ver si existe la raiz robertos
+		
+		} else {
+			printf ("\nNo existe una raiz\n") ;
+		
+		}
+		break;
+
+	case 2:
+		printf ("Busqueda de Nodo, seleccionado.\n");
+
+		printf ("\nIngrese el nodo\n");
+		printf ("-> ");
+		scanf ("%s", respn );
+
+		if (es_miembro ( raiz, respn ) == 1) 							// llamo funcion para ver si existe el nodo lionel
+		{									
+			printf ("\nEl nodo ingresado existe\n");
+		}
+		else {
+			printf ("\nEl nodo, no existe\n");
+		}
+
+	default:
+		printf ("Numero no reconocido.\n");
+		break;
+	}
 
 	printf ("Que nodo queres verificar?\n");
 	printf ("-> ");

@@ -67,9 +67,9 @@
  char respn [15];
 
 	inserta (&raiz, "manzana");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "uva");												// inserto de forma manual el string al arbol
 	inserta (&raiz, "pera");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "fresa");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "uva");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "fresa");											// inserto de forma manual el string al arbol
 	inserta (&raiz, "naranja");											// inserto de forma manual el string al arbol
 
 	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden

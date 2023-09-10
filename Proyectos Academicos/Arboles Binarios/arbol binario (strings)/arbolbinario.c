@@ -1,5 +1,3 @@
-
-
 /* arbolbinario .c */
 
 #include <stdio.h>
@@ -166,43 +164,48 @@
 
 	/*Funcion para eliminar*/
 
-// 	int suprime_min ( arbol ** A )
-//  {
-// 		int v_ref ;
-// 		if ((* A ) -> h_izq == NULL ) {
-// 			v_ref = (* A ) -> dato;
-// 			arbol * tmp = * A;
-// 			* A = (* A ) -> h_der;
-// 			free ( tmp );
-// 			return v_ref;
-//  		} else {
-//  			return suprime_min (&((* A ) -> h_izq ) ) ;
-//  			}
-//  }
-// 		void suprime ( arbol ** A , char x ) {
+ int suprime_min ( arbol ** A )
+{
+	int v_ref ;
+	if ((* A ) -> h_izq == NULL ) 
+	{
+		v_ref = (* A ) -> dato;
+		arbol * tmp = * A;
+		* A = (* A ) -> h_der;
+		free ( tmp );
+		return v_ref;
+	} else {
+		return suprime_min (&((* A ) -> h_izq ) );
+	}
+}
 
-//  		if (* A != NULL ) {
-//  			if ( x < (* A ) -> dato )
-//  				suprime (&((* A ) -> h_izq ) , x ) ;
-//  		else if ( x > (* A ) -> dato )
-//  				suprime (&((* A ) -> h_der ) , x ) ;
+ void suprime ( arbol ** A , char x )
+{
+	if (* A != NULL ) 
+	{
+ 		if ( x < (* A ) -> dato )
+ 			suprime (&((* A ) -> h_izq ) , x );
 
-//  // Lo encontre
+ 		else if ( x > (* A ) -> dato )
+ 			suprime (&((* A ) -> h_der ) , x );
+//																		 // Lo encontre
+ 		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {
+			 arbol * tmp = * A;
+			 * A = NULL;
+ 			 free ( tmp );
 
-//  		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {
-//  			arbol * tmp = * A ;
-//  			* A = NULL ;
-//  			free ( tmp ) ;
-// 		} else if ((* A ) -> h_izq == NULL ) {
-//  			arbol * tmp = * A ;
-// 			 * A = (* A ) -> h_der ;
-// 			 free ( tmp ) ;
-//  		} else if ((* A ) -> h_der == NULL ) {
-//  			arbol * tmp = * A ;
-//  			* A = (* A ) -> h_izq ;
-//  			free ( tmp ) ;
-//  		} else { 										
-//  			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) ) ;
-//  		}
-// 	}
-// }
+		} else if ((* A ) -> h_izq == NULL ) {
+ 			 arbol * tmp = * A;
+			 * A = (* A ) -> h_der;
+			 free ( tmp );
+
+ 		} else if ((* A ) -> h_der == NULL ) {
+ 			 arbol * tmp = * A;
+ 			 * A = (* A ) -> h_izq;
+ 			 free ( tmp );
+
+ 		} else {			
+ 			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) );
+ 		}
+ 	}
+}

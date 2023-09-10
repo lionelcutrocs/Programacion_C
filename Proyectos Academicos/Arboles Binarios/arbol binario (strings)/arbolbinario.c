@@ -129,6 +129,47 @@
 		break;
 	}
 
+	printf ("\n---------------------------->\n");
+	printf ("Ahora podras, eliminar o recorrer nodos\n");
+	printf ("\n1. Opcion recorrer el arbol;\n");
+	printf ("2. Opcion eliminar nodo\n");
+
+	printf ("\nIngrese el numero correspondiente\n");
+	printf ("-> ");
+	scanf ("%d", &resp1 );
+
+	if ( resp1 == 1)
+	{
+		printf ("\nIndique en que formato quiere recorrer el arbol:\n");
+		printf ("\n1. In - order\n");
+		printf ("2. Pos - order\n");
+		printf ("3. Pre - order\n");
+		printf ("\n-> ");
+		scanf ("%d", &respR );
+
+		switch ( respR )
+		{
+			case 1:
+				printf("\nListado en in orden\n");									// llamo funcion para listar el arbol en cierto orden
+				listar_inorden(raiz);
+				printf ("\n");
+			break;
+		
+		 case 2:
+				printf("\nListado en posorden\n");									// llamo funcion para listar el arbol en cierto orden
+				listar_posorden(raiz);
+				printf ("\n");
+			break;
+
+		 case 3:
+				printf ("\nListado en preorden\n");								// llamo funcion para listar el arbol en cierto orden
+				listar_preorden(raiz);
+				printf ("\n");
+			break;
+
+		 default:
+			break;
+		}
 	
 
 
@@ -181,48 +222,48 @@
 
 	/*Funcion para eliminar*/
 
- int suprime_min ( arbol ** A )
-{
-	int v_ref ;
-	if ((* A ) -> h_izq == NULL ) 
-	{
-		v_ref = (* A ) -> dato;
-		arbol * tmp = * A;
-		* A = (* A ) -> h_der;
-		free ( tmp );
-		return v_ref;
-	} else {
-		return suprime_min (&((* A ) -> h_izq ) );
-	}
-}
+//  int suprime_min ( arbol ** A )
+// {
+// 	int v_ref ;
+// 	if ((* A ) -> h_izq == NULL ) 
+// 	{
+// 		v_ref = (* A ) -> dato;
+// 		arbol * tmp = * A;
+// 		* A = (* A ) -> h_der;
+// 		free ( tmp );
+// 		return v_ref;
+// 	} else {
+// 		return suprime_min (&((* A ) -> h_izq ) );
+// 	}
+// }
 
- void suprime ( arbol ** A , char x )
-{
-	if (* A != NULL ) 														// Verifico que haya un nodo en la posicion actual
-	{
- 		if ( x < (* A ) -> dato )											// Elimino un nodo simple en lado Izquierdo
- 			suprime (&((* A ) -> h_izq ) , x );
+//  void suprime ( arbol ** A , char x )
+// {
+// 	if (* A != NULL ) 														// Verifico que haya un nodo en la posicion actual
+// 	{
+//  		if ( x < (* A ) -> dato )											// Elimino un nodo simple en lado Izquierdo
+//  			suprime (&((* A ) -> h_izq ) , x );
 
- 		else if ( x > (* A ) -> dato )										// Elimino un nodo simple en lado Derecho
- 			suprime (&((* A ) -> h_der ) , x );
-//																		 	// Encuentro nodo, adapto varios casos de eliminacion
- 		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {		// Caso, el nodo sin hijos.
-			 arbol * tmp = * A;												// Creo un puntero temporal "tmp" apuntando al nodo a eliminar
-			 * A = NULL;													// Indico que el nodo se elimino en el arbol
- 			 free ( tmp );													// Libero memoria ocupada por "tmp"
+//  		else if ( x > (* A ) -> dato )										// Elimino un nodo simple en lado Derecho
+//  			suprime (&((* A ) -> h_der ) , x );
+// //																		 	// Encuentro nodo, adapto varios casos de eliminacion
+//  		else if ((* A ) -> h_izq == NULL && (* A ) -> h_der == NULL ) {		// Caso, el nodo sin hijos.
+// 			 arbol * tmp = * A;												// Creo un puntero temporal "tmp" apuntando al nodo a eliminar
+// 			 * A = NULL;													// Indico que el nodo se elimino en el arbol
+//  			 free ( tmp );													// Libero memoria ocupada por "tmp"
 
-		} else if ((* A ) -> h_izq == NULL ) {								// Elimino nodo en lado Derecho
- 			 arbol * tmp = * A;
-			 * A = (* A ) -> h_der;
-			 free ( tmp );
+// 		} else if ((* A ) -> h_izq == NULL ) {								// Elimino nodo en lado Derecho
+//  			 arbol * tmp = * A;
+// 			 * A = (* A ) -> h_der;
+// 			 free ( tmp );
 
- 		} else if ((* A ) -> h_der == NULL ) {								// Elimino nodo en lado Izquierdo
- 			 arbol * tmp = * A;
- 			 * A = (* A ) -> h_izq;
- 			 free ( tmp );
+//  		} else if ((* A ) -> h_der == NULL ) {								// Elimino nodo en lado Izquierdo
+//  			 arbol * tmp = * A;
+//  			 * A = (* A ) -> h_izq;
+//  			 free ( tmp );
 
- 		} else {			
- 			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) );				// Elimino un padre con hijos, se llama a suprimir en el valor minimo a la derecha
- 		}																	// y reemplazo el valor minimo entre los valores mayores y se actualiza,
- 	}																		// este metodo ayuda a mantener el arbol en equilibrio.
-}
+//  		} else {			
+//  			(* A ) -> dato = suprime_min (&((*A ) -> h_der ) );				// Elimino un padre con hijos, se llama a suprimir en el valor minimo a la derecha
+//  		}																	// y reemplazo el valor minimo entre los valores mayores y se actualiza,
+//  	}																		// este metodo ayuda a mantener el arbol en equilibrio.
+// }

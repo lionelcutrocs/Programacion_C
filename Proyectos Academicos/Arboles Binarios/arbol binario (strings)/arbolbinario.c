@@ -66,11 +66,11 @@
  char resp3 [3];
  char respn [15];
 
-	inserta (&raiz, "robertos");											// inserto de forma manual el string al arbol
-	inserta (&raiz, "malloc");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "noak");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "diinassty");											// inserto de forma manual el string al arbol
-	inserta (&raiz, "fiirestorm");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "manzana");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "pera");												// inserto de forma manual el string al arbol
+	inserta (&raiz, "fresa");												// inserto de forma manual el string al arbol
+	inserta (&raiz, "uva");											// inserto de forma manual el string al arbol
+	inserta (&raiz, "naranja");											// inserto de forma manual el string al arbol
 
 	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
 	listar_inorden(raiz);

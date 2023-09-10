@@ -77,10 +77,12 @@
 	// 	printf ("\n");
 
 	printf ("Bienvenidx al manejo de Arbol Binario.\n");
-	printf ("Eliga la siguiente opcion para comenzar. (ingrese el numero correspondiente)\n");
+	printf ("Eliga la siguiente opcion para comenzar.\n");
 	printf ("\n1. Opcion de Busqueda de Raiz.");
 	printf ("2. Opcion de Busqueda de Nodos.\n");
 
+	printf ("Ingrese el numero correspondiente\n");
+	scanf ("%s", opcion );
 
 	switch ( opcion )
 	{

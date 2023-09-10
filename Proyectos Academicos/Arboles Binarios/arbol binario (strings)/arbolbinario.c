@@ -124,43 +124,6 @@
 		break;
 	}
 
-	printf ("Que nodo queres verificar?\n");
-	printf ("-> ");
-	scanf ("%s", resp1 );
-
-	if ( strcmp ( resp1, "raiz" ) == 0 )
-	{
-		printf ("\nIngrese la raiz\n");
-		printf ("-> ");
-		scanf ("%s", resp2 );
-		
-		if (es_miembro ( raiz , resp2 ) == 1)
-		{
-			printf ("\nLa raiz, si existe.\n");							// llamo funcion para ver si existe la raiz robertos
-		}
-		else {
-			printf ("\nNo existe una raiz\n") ;
-		}
-	} 
-	
-	printf ("\nQueres buscar un nodo?\n");
-	printf ("-> ");
-	scanf ("%s", resp3 );
-
-	if ( strcasecmp ( resp3, "si" ) == 0 )
-	{
-		printf ("\nIngrese el nodo\n");
-		printf ("-> ");
-		scanf ("%s", respn );
-
-		if (es_miembro ( raiz, respn ) == 1) 							// llamo funcion para ver si existe el nodo lionel
-		{									
-			printf ("\nEl nodo ingresado existe\n");
-		}
-		else {
-			printf ("\nNo existe 2\n");
-		}
-	}
 	
 
 

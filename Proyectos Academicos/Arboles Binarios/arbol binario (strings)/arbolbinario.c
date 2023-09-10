@@ -190,7 +190,7 @@
 	 system ("pause");
 	 return 0;
 	}
-
+}
 	/*Funciones de listado*/
 
 	void listar_preorden ( arbol* raiz) {

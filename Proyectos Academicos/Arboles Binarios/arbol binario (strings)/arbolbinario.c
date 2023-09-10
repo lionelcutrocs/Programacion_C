@@ -65,16 +65,17 @@
  char resp2 [10];
  char resp3 [3];
  char respn [15];
+ 
+//																		// insercion de nodos
+	inserta (&raiz, "manzana");											// 7
+	inserta (&raiz, "uva");												// 3
+	inserta (&raiz, "pera");											// 4
+	inserta (&raiz, "fresa");											// 5
+	inserta (&raiz, "naranja");											// 7
 
-	inserta (&raiz, "manzana");											// inserto de forma manual el string al arbol
-	inserta (&raiz, "uva");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "pera");												// inserto de forma manual el string al arbol
-	inserta (&raiz, "fresa");											// inserto de forma manual el string al arbol
-	inserta (&raiz, "naranja");											// inserto de forma manual el string al arbol
-
-	printf("listado en inorden\n");											// llamo funcion para listar el arbol en cierto orden
-	listar_inorden(raiz);
-		printf ("\n");
+	// printf("listado en inorden\n");									// llamo funcion para listar el arbol en cierto orden
+	// listar_inorden(raiz);
+	// 	printf ("\n");
 
 	printf ("Que nodo queres verificar?\n");
 	printf ("-> ");

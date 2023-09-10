@@ -64,8 +64,8 @@
  char respC1 [10];
  int respR;
  char respC2 [10];
- char resp2 [3];
- char respE [8];
+//  char resp2 [3];
+//  char respE [8];
  
 //																		// insercion de nodos
 	inserta (&raiz, "manzana");											// 7
@@ -216,7 +216,7 @@
 			{
 			listar_posorden ( raiz -> h_izq );									// me muevo hacia la izquierda (imprimo)
 			listar_posorden ( raiz -> h_der);									// me muevo hacia la derecha (imprimo)
-			printf ( "%s \n", raiz -> dato);									// imprimo la raiz
+			printf ("%s \n", raiz -> dato);									// imprimo la raiz
 		}
 	}
 
